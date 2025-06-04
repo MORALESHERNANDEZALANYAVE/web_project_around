@@ -17,12 +17,10 @@
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
   </head>
 
-  <script src="./script.js"></script>
-
   <body>
     <div class="page">
       <header class="header">
-        <img class="header__image" src="./images/Vector.svg" alt="Titulo" />
+        <img class="header__image" src="./images/vector.svg" alt="Titulo" />
         <hr class="header__line" />
       </header>
 
@@ -30,7 +28,7 @@
         <div class="profile">
           <img
             class="profile__image"
-            src="./images/Avatar.png"
+            src="./images/avatar.png"
             alt="Foto de perfil"
           />
           <div class="profile__info">
@@ -39,11 +37,11 @@
           </div>
 
           <button class="profile__edit-button">
-            <img src="./images/Edit Button.svg" alt="Boton de editar" />
+            <img src="./images/Edit-Button.svg" alt="Boton de editar" />
           </button>
 
           <button class="profile__add-button">
-            <img src="./images/Add Button.svg" alt="Boton de agregar" />
+            <img src="./images/Add-Button.svg" alt="Boton de agregar" />
           </button>
         </div>
 
@@ -51,7 +49,7 @@
           <div class="elements element">
             <img
               class="element__image"
-              src="./images/img1.jpg"
+              src="./images/valle-de-yosemite.jpg"
               alt="Valle de Yosemite"
             />
 
@@ -67,7 +65,7 @@
           <div class="elements element">
             <img
               class="element__image"
-              src="./images/img2.png"
+              src="./images/lago-louise.png"
               alt="Valle de Yosemite"
             />
 
@@ -83,7 +81,7 @@
           <div class="elements element">
             <img
               class="element__image"
-              src="./images/img3.png"
+              src="./images/montañas-calvas.png"
               alt="Valle de Yosemite"
             />
 
@@ -99,7 +97,7 @@
           <div class="elements element">
             <img
               class="element__image"
-              src="./images/img4.png"
+              src="./images/latemar.png"
               alt="Valle de Yosemite"
             />
 
@@ -115,7 +113,7 @@
           <div class="elements element">
             <img
               class="element__image"
-              src="./images/img5.png"
+              src="./images/vanois-national.png"
               alt="Valle de Yosemite"
             />
 
@@ -131,7 +129,7 @@
           <div class="elements element">
             <img
               class="element__image"
-              src="./images/img6.png"
+              src="./images/lago-di-braies.png"
               alt="Valle de Yosemite"
             />
 
@@ -146,9 +144,42 @@
         </section>
       </main>
 
+      <div class="popup">
+        <button class="popup__close" type="button">&#x1F7A9;</button>
+
+        <form class="popup__form" id="form_edit-profile">
+          <h3 class="popup__form-title">Editar perfil</h3>
+          <label class="popup__label">
+            <input
+              type="text"
+              class="popup__input"
+              placeholder="Nombre"
+              id="name"
+              name="name"
+            />
+          </label>
+          <label class="popup__label">
+            <input
+              type="text"
+              class="popup__input"
+              placeholder="Acerca de mí"
+              id="abaut"
+              name="abaut"
+            />
+          </label>
+          <button class="popup__button" type="submit">Guardar</button>
+        </form>
+
+        <form class=""></form>
+      </div>
+
       <footer class="footer">
-        <h2 class="footer__copyright">© Alan Yavé Morales Hernández 2024</h2>
+        <h2 class="footer__copyright">
+          &copy; Alan Yavé Morales Hernández 2024
+        </h2>
       </footer>
     </div>
+
+    <script src="./script/script.js"></script>
   </body>
 </html>
