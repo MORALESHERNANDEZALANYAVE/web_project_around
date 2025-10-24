@@ -1,0 +1,40 @@
+.header {
+  max-width: 880px;
+  max-height: 74px;
+  margin: 0 auto 40px;
+  padding-top: 45px;
+}
+
+.header__image {
+  max-width: 173px;
+  max-height: 33px;
+}
+
+.header__line {
+  max-width: 880px;
+  margin: 41px auto 40px;
+  opacity: 70%;
+  border: 1px solid #545454;
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    max-width: 320px;
+    max-height: 56px;
+    margin: 0 auto 42px 0;
+    padding-top: 28px;
+  }
+
+  .header__image {
+    max-width: 126px;
+    max-height: 24px;
+    padding-left: 27px;
+  }
+
+  .header__line {
+    max-width: 320px;
+    margin: 32px auto 42px;
+    opacity: 70%;
+    border: 1px solid #545454;
+  }
+}
