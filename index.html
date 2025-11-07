@@ -32,17 +32,24 @@
             alt="Foto de perfil"
           />
           <div class="profile__info">
-            <h1 class="profile__name">Jacques Cousteau</h1>
+            <h1 class="profile__name">
+              Jacques Cousteau
+              <button class="profile__edit-button">
+                <img src="./images/Edit-Button.svg" alt="Boton de editar" />
+              </button>
+            </h1>
             <h2 class="profile__job">Explorador</h2>
           </div>
 
-          <button class="profile__edit-button">
-            <img src="./images/Edit-Button.svg" alt="Boton de editar" />
-          </button>
-
-          <button class="profile__add-button">
-            <img src="./images/Add-Button.svg" alt="Boton de agregar" />
-          </button>
+          <div class="profile__add-button">
+            <button
+              class="profile__button"
+              alt="Boton de agregar"
+              type="button"
+            >
+              &#128930;
+            </button>
+          </div>
         </div>
 
         <section class="elements">
@@ -163,14 +170,12 @@
               type="text"
               class="popup__input"
               placeholder="Acerca de mí"
-              id="abaut"
-              name="abaut"
+              id="about"
+              name="about"
             />
           </label>
           <button class="popup__button" type="submit">Guardar</button>
         </form>
-
-        <form class=""></form>
       </div>
 
       <footer class="footer">

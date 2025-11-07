@@ -5,7 +5,7 @@ const form = document.querySelector(".popup__form");
 const inName = document.querySelector(".profile__name");
 const inAbout = document.querySelector(".profile__job");
 const inpName = document.querySelector("#name");
-const inpAbout = document.querySelector("#abaut");
+const inpAbout = document.querySelector("#about");
 
 function openEdit() {
   inpName.value = inName.textContent;
