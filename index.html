@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,7 +25,7 @@
       </header>
 
       <main class="main">
-        <div class="profile">
+        <section class="profile">
           <img
             class="profile__image"
             src="./images/avatar.png"
@@ -48,7 +48,7 @@
               &#128930;
             </button>
           </div>
-        </div>
+        </section>
 
         <section class="elements">
           <div class="elements element">
@@ -61,9 +61,7 @@
             <div class="element__cards">
               <h2 class="element__description">Valle de Yosemite</h2>
 
-              <button class="element__like-button">
-                <img src="./images/like-button.svg" alt="" />
-              </button>
+              <button class="element__like-button" type="button"></button>
             </div>
           </div>
 
@@ -77,9 +75,7 @@
             <div class="element__cards">
               <h2 class="element__description">Lago Louise</h2>
 
-              <button class="element__like-button">
-                <img src="./images/like-button.svg" alt="" />
-              </button>
+              <button class="element__like-button" type="button"></button>
             </div>
           </div>
 
@@ -93,9 +89,7 @@
             <div class="element__cards">
               <h2 class="element__description">Montañas Calvas</h2>
 
-              <button class="element__like-button">
-                <img src="./images/like-button.svg" alt="" />
-              </button>
+              <button class="element__like-button" type="button"></button>
             </div>
           </div>
 
@@ -109,9 +103,7 @@
             <div class="element__cards">
               <h2 class="element__description">Latemar</h2>
 
-              <button class="element__like-button">
-                <img src="./images/like-button.svg" alt="" />
-              </button>
+              <button class="element__like-button" type="button"></button>
             </div>
           </div>
 
@@ -123,11 +115,11 @@
             />
 
             <div class="element__cards">
-              <h2 class="element__description">Vanois National...</h2>
+              <h2 class="element__description">
+                Parque Nacional de la Vanoise
+              </h2>
 
-              <button class="element__like-button">
-                <img src="./images/like-button.svg" alt="" />
-              </button>
+              <button class="element__like-button" type="button"></button>
             </div>
           </div>
 
@@ -141,45 +133,43 @@
             <div class="element__cards">
               <h2 class="element__description">Lago di Braies</h2>
 
-              <button class="element__like-button">
-                <img src="./images/like-button.svg" alt="" />
-              </button>
+              <button class="element__like-button" type="button"></button>
             </div>
           </div>
         </section>
       </main>
 
       <div class="popup">
-        <button class="popup__close" type="button">&#x1F7A9;</button>
+        <div class="popup__container">
+          <button class="popup__close" type="button">&#x1F7A9;</button>
 
-        <form class="popup__form" id="form_edit-profile">
-          <h3 class="popup__form-title">Editar perfil</h3>
-          <label class="popup__label">
-            <input
-              type="text"
-              class="popup__input"
-              placeholder="Nombre"
-              id="name"
-              name="name"
-            />
-          </label>
-          <label class="popup__label">
-            <input
-              type="text"
-              class="popup__input"
-              placeholder="Acerca de mí"
-              id="about"
-              name="about"
-            />
-          </label>
-          <button class="popup__button" type="submit">Guardar</button>
-        </form>
+          <form class="popup__form" id="form_edit-profile">
+            <h3 class="popup__form-title">Editar perfil</h3>
+            <label class="popup__label">
+              <input
+                type="text"
+                class="popup__input"
+                placeholder="Nombre"
+                id="name"
+                name="name"
+              />
+            </label>
+            <label class="popup__label">
+              <input
+                type="text"
+                class="popup__input"
+                placeholder="Acerca de mí"
+                id="about"
+                name="about"
+              />
+            </label>
+            <button class="popup__button" type="submit">Guardar</button>
+          </form>
+        </div>
       </div>
 
       <footer class="footer">
-        <h2 class="footer__copyright">
-          &copy; Alan Yavé Morales Hernández 2024
-        </h2>
+        <p class="footer__copyright">&copy; Alan Yavé Morales Hernández 2024</p>
       </footer>
     </div>
 
