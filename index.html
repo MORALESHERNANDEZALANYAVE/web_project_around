@@ -50,93 +50,7 @@
           </div>
         </section>
 
-        <section class="elements">
-          <div class="elements element">
-            <img
-              class="element__image"
-              src="./images/valle-de-yosemite.jpg"
-              alt="Valle de Yosemite"
-            />
-
-            <div class="element__cards">
-              <h2 class="element__description">Valle de Yosemite</h2>
-
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </div>
-
-          <div class="elements element">
-            <img
-              class="element__image"
-              src="./images/lago-louise.png"
-              alt="Valle de Yosemite"
-            />
-
-            <div class="element__cards">
-              <h2 class="element__description">Lago Louise</h2>
-
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </div>
-
-          <div class="elements element">
-            <img
-              class="element__image"
-              src="./images/montañas-calvas.png"
-              alt="Valle de Yosemite"
-            />
-
-            <div class="element__cards">
-              <h2 class="element__description">Montañas Calvas</h2>
-
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </div>
-
-          <div class="elements element">
-            <img
-              class="element__image"
-              src="./images/latemar.png"
-              alt="Valle de Yosemite"
-            />
-
-            <div class="element__cards">
-              <h2 class="element__description">Latemar</h2>
-
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </div>
-
-          <div class="elements element">
-            <img
-              class="element__image"
-              src="./images/vanois-national.png"
-              alt="Valle de Yosemite"
-            />
-
-            <div class="element__cards">
-              <h2 class="element__description">
-                Parque Nacional de la Vanoise
-              </h2>
-
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </div>
-
-          <div class="elements element">
-            <img
-              class="element__image"
-              src="./images/lago-di-braies.png"
-              alt="Valle de Yosemite"
-            />
-
-            <div class="element__cards">
-              <h2 class="element__description">Lago di Braies</h2>
-
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </div>
-        </section>
+        <section class="elements"></section>
       </main>
 
       <div class="popup">
@@ -165,6 +79,51 @@
             </label>
             <button class="popup__button" type="submit">Guardar</button>
           </form>
+        </div>
+      </div>
+
+      <div class="popup popup_add-card">
+        <div class="popup__container">
+          <button class="popup__close popup__close_add-card" type="button">
+            &#x1F7A9;
+          </button>
+
+          <form class="popup__form popup__form_add-card">
+            <h3 class="popup__form-title">Nuevo lugar</h3>
+
+            <label class="popup__label">
+              <input
+                type="text"
+                class="popup__input"
+                placeholder="Titulo"
+                name="title"
+                required
+              />
+            </label>
+
+            <label class="popup__label">
+              <input
+                type="url"
+                class="popup__input"
+                placeholder="Enlace a la imagen"
+                name="link"
+                required
+              />
+            </label>
+
+            <button class="popup__button" type="submit">Crear</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_image">
+        <div class="popup__container popup__container_image">
+          <button class="popup__close popup__close_image" type="button">
+            &#x1F7A9;
+          </button>
+
+          <img class="popup__image" src="" alt="" />
+          <p class="popup__caption"></p>
         </div>
       </div>
 
