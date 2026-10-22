@@ -66,15 +66,9 @@
   right: 15px;
 }
 
-.element__delente-button:hover {
+.element__delete-button:hover {
   opacity: 0.6;
   transition: opacity 0.3s ease;
-}
-
-.element__delente-button img {
-  width: 100%;
-  height: 100%;
-  display: block;
 }
 
 .element__like-button_active {

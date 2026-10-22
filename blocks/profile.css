@@ -146,3 +146,10 @@
   .profile__button {
     padding: 17px 133px;
   }
+}
+@media screen and (max-width: 620px) {
+  .profile {
+    flex-direction: column;
+    align-items: center;
+  }
+}
