@@ -26,9 +26,10 @@ const initialCards = [
 ];
 
 const editButton = document.querySelector(".profile__edit-button");
-const closeButton = document.querySelector(".popup__close");
-const popup = document.querySelector(".popup");
-const profileForm = document.querySelector(".popup__form");
+
+const profilePopup = document.querySelector("#profile-popup");
+const profileCloseButton = profilePopup.querySelector(".popup__close");
+const profileForm = document.querySelector("#form_edit-profile");
 
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
@@ -41,13 +42,20 @@ const elementsContainer = document.querySelector(".elements");
 const addButton = document.querySelector(".profile__button");
 const addCardPopup = document.querySelector(".popup_add-card");
 const addCardCloseButton = document.querySelector(".popup__close_add-card");
-
 const addCardForm = document.querySelector(".popup__form_add-card");
 
 const imagePopup = document.querySelector(".popup_image");
 const imagePopupCloseButton = imagePopup.querySelector(".popup__close_image");
 const imagePopupImage = imagePopup.querySelector(".popup__image");
 const imagePopupCaption = imagePopup.querySelector(".popup__caption");
+
+function openModal(modal) {
+  modal.classList.add("popup_opened");
+}
+
+function closeModal(modal) {
+  modal.classList.remove("popup_opened");
+}
 
 function handleLikeButtonClick(evt) {
   evt.target.classList.toggle("element__like-button_active");
@@ -58,7 +66,7 @@ function openImagePopup(link, name) {
   imagePopupImage.alt = name;
   imagePopupCaption.textContent = name;
 
-  imagePopup.classList.add("popup_opened");
+  openModal(imagePopup);
 }
 
 function handleDeleteButtonClick(evt) {
@@ -92,14 +100,14 @@ function createCard(name, link) {
 
   likeButton.addEventListener("click", handleLikeButtonClick);
 
-  const delenteButton = document.createElement("button");
-  delenteButton.classList.add("element__delente-button");
-  delenteButton.type = "button";
+  const deleteButton = document.createElement("button");
+  deleteButton.classList.add("element__delete-button");
+  deleteButton.type = "button";
 
-  delenteButton.addEventListener("click", handleDeleteButtonClick);
+  deleteButton.addEventListener("click", handleDeleteButtonClick);
 
   cardContent.append(title, likeButton);
-  card.append(image, cardContent, delenteButton);
+  card.append(image, cardContent, deleteButton);
 
   return card;
 }
@@ -109,23 +117,11 @@ initialCards.forEach((cardData) => {
   elementsContainer.append(cardElement);
 });
 
-function openPopup() {
+function openProfilePopup() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 
-  popup.classList.add("popup_opened");
-}
-
-function closePopup() {
-  popup.classList.remove("popup_opened");
-}
-
-function openAddCardPopup() {
-  addCardPopup.classList.add("popup_opened");
-}
-
-function closeAddCardPopup() {
-  addCardPopup.classList.remove("popup_opened");
+  openModal(profilePopup);
 }
 
 function handleAddCardSubmit(evt) {
@@ -137,7 +133,7 @@ function handleAddCardSubmit(evt) {
   const newCard = createCard(title, link);
   elementsContainer.prepend(newCard);
 
-  closeAddCardPopup();
+  closeModal(addCardPopup);
   evt.target.reset();
 }
 
@@ -147,18 +143,27 @@ function handleProfileFormSubmit(evt) {
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
 
-  closePopup();
+  closeModal(profilePopup);
 }
 
-editButton.addEventListener("click", openPopup);
-closeButton.addEventListener("click", closePopup);
+editButton.addEventListener("click", openProfilePopup);
+
+profileCloseButton.addEventListener("click", () => {
+  closeModal(profilePopup);
+});
+
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
-addButton.addEventListener("click", openAddCardPopup);
-addCardCloseButton.addEventListener("click", closeAddCardPopup);
+addButton.addEventListener("click", () => {
+  openModal(addCardPopup);
+});
+
+addCardCloseButton.addEventListener("click", () => {
+  closeModal(addCardPopup);
+});
 
 addCardForm.addEventListener("submit", handleAddCardSubmit);
 
 imagePopupCloseButton.addEventListener("click", () => {
-  imagePopup.classList.remove("popup_opened");
+  closeModal(imagePopup);
 });

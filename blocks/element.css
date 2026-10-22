@@ -52,7 +52,7 @@
   opacity: 0.6; /* Se reduce al pasar el cursor */
 }
 
-.element__delente-button {
+.element__delete-button {
   width: 18px;
   height: 18px;
   padding: 0;
