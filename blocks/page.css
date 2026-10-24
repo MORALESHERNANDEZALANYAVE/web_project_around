@@ -4,3 +4,10 @@
   color: #fff;
   font-family: "Inter", Arial, sans-serif;
 }
+
+@media screen and (min-width: 321px) and (max-width: 920px) {
+  .page {
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+}

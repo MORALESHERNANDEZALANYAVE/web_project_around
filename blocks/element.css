@@ -1,28 +1,31 @@
 .element {
+  width: 100%;
   max-width: 282px;
-  max-height: 361px;
   display: flex;
   flex-direction: column;
   gap: 0;
   position: relative;
+  min-width: 0;
 }
 
 .element__cards {
   width: 100%;
-  max-height: 79px;
+  min-height: 79px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-
   background-color: white;
   color: black;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  box-sizing: border-box;
 }
 
 .element__image {
-  width: 282px;
-  height: 282px;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
   object-fit: cover;
 }
 

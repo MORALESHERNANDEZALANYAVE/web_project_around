@@ -11,10 +11,12 @@
 }
 
 .header__line {
+  width: 100%;
   max-width: 880px;
   margin: 41px auto 40px;
   opacity: 70%;
   border: 1px solid #545454;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 320px) {
@@ -29,12 +31,5 @@
     max-width: 126px;
     max-height: 24px;
     padding-left: 27px;
-  }
-
-  .header__line {
-    width: 320px;
-    margin: 32px auto 0;
-    opacity: 70%;
-    border: 1px solid #545454;
   }
 }
