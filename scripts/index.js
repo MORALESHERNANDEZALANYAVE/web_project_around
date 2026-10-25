@@ -48,6 +48,14 @@ const addCardPopup = document.querySelector(".popup_add-card");
 const addCardCloseButton = document.querySelector(".popup__close_add-card");
 const addCardForm = document.querySelector(".popup__form_add-card");
 
+const titleInput = addCardForm.querySelector("#title");
+const linkInput = addCardForm.querySelector("#link");
+
+const titleError = addCardForm.querySelector("#title-error");
+const linkError = addCardForm.querySelector("#link-error");
+
+const addCardSaveButton = addCardForm.querySelector(".popup__button");
+
 const imagePopup = document.querySelector(".popup_image");
 const imagePopupCloseButton = imagePopup.querySelector(".popup__close_image");
 const imagePopupImage = imagePopup.querySelector(".popup__image");
@@ -59,6 +67,16 @@ function openModal(modal) {
 
 function closeModal(modal) {
   modal.classList.remove("popup_opened");
+}
+
+function handleEscClose(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+
+    if (openedPopup) {
+      closeModal(openedPopup);
+    }
+  }
 }
 
 function handleLikeButtonClick(evt) {
@@ -150,21 +168,6 @@ function handleProfileFormSubmit(evt) {
   closeModal(profilePopup);
 }
 
-function checkInputValidity(input, errorElement) {
-  if (!input.validity.valid) {
-    errorElement.textContent = input.validationMessage;
-  } else {
-    errorElement.textContent = "";
-  }
-}
-
-function checkProfileFormValidity() {
-  checkInputValidity(nameInput, nameError);
-  checkInputValidity(jobInput, jobError);
-
-  saveButton.disabled = !profileForm.checkValidity();
-}
-
 editButton.addEventListener("click", openProfilePopup);
 
 profileCloseButton.addEventListener("click", () => {
@@ -187,5 +190,15 @@ imagePopupCloseButton.addEventListener("click", () => {
   closeModal(imagePopup);
 });
 
-nameInput.addEventListener("input", checkProfileFormValidity);
-jobInput.addEventListener("input", checkProfileFormValidity);
+addCardSaveButton.disabled = true;
+
+document.addEventListener("keydown", handleEscClose);
+
+enableValidation({
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+});
