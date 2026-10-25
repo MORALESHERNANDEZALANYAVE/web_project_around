@@ -37,6 +37,10 @@ const profileJob = document.querySelector(".profile__job");
 const nameInput = document.querySelector("#name");
 const jobInput = document.querySelector("#about");
 
+const nameError = document.querySelector("#name-error");
+const jobError = document.querySelector("#about-error");
+const saveButton = profileForm.querySelector(".popup__button");
+
 const elementsContainer = document.querySelector(".elements");
 
 const addButton = document.querySelector(".profile__button");
@@ -146,6 +150,21 @@ function handleProfileFormSubmit(evt) {
   closeModal(profilePopup);
 }
 
+function checkInputValidity(input, errorElement) {
+  if (!input.validity.valid) {
+    errorElement.textContent = input.validationMessage;
+  } else {
+    errorElement.textContent = "";
+  }
+}
+
+function checkProfileFormValidity() {
+  checkInputValidity(nameInput, nameError);
+  checkInputValidity(jobInput, jobError);
+
+  saveButton.disabled = !profileForm.checkValidity();
+}
+
 editButton.addEventListener("click", openProfilePopup);
 
 profileCloseButton.addEventListener("click", () => {
@@ -167,3 +186,6 @@ addCardForm.addEventListener("submit", handleAddCardSubmit);
 imagePopupCloseButton.addEventListener("click", () => {
   closeModal(imagePopup);
 });
+
+nameInput.addEventListener("input", checkProfileFormValidity);
+jobInput.addEventListener("input", checkProfileFormValidity);

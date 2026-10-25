@@ -50,9 +50,9 @@
 }
 
 .popup__form {
-  width: 100%;
-  max-width: 430px;
+  width: 430px;
   height: 330px;
+  box-sizing: border-box;
   background-color: #fff;
   border-radius: 15px;
   display: flex;
@@ -97,6 +97,11 @@
 .popup__close:hover,
 .popup__button:hover {
   opacity: 0.6;
+}
+
+.popup__error {
+  color: #ff0000;
+  font-size: 12px;
 }
 
 @media screen and (max-width: 320px) {
