@@ -63,11 +63,23 @@ const imagePopupCaption = imagePopup.querySelector(".popup__caption");
 
 function openModal(modal) {
   modal.classList.add("popup_opened");
+  document.addEventListener("keydown", handleEscClose);
 }
 
 function closeModal(modal) {
   modal.classList.remove("popup_opened");
+  document.removeEventListener("keydown", handleEscClose);
 }
+
+function handleOverlayClick(evt) {
+  if (evt.target === evt.currentTarget) {
+    closeModal(evt.currentTarget);
+  }
+}
+
+profilePopup.addEventListener("mousedown", handleOverlayClick);
+addCardPopup.addEventListener("mousedown", handleOverlayClick);
+imagePopup.addEventListener("mousedown", handleOverlayClick);
 
 function handleEscClose(evt) {
   if (evt.key === "Escape") {
@@ -191,8 +203,6 @@ imagePopupCloseButton.addEventListener("click", () => {
 });
 
 addCardSaveButton.disabled = true;
-
-document.addEventListener("keydown", handleEscClose);
 
 enableValidation({
   formSelector: ".popup__form",
