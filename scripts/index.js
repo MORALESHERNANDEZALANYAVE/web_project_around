@@ -1,3 +1,7 @@
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+import { openModal, closeModal, setOverlayListeners } from "./utils.js";
+
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -37,10 +41,6 @@ const profileJob = document.querySelector(".profile__job");
 const nameInput = document.querySelector("#name");
 const jobInput = document.querySelector("#about");
 
-const nameError = document.querySelector("#name-error");
-const jobError = document.querySelector("#about-error");
-const saveButton = profileForm.querySelector(".popup__button");
-
 const elementsContainer = document.querySelector(".elements");
 
 const addButton = document.querySelector(".profile__button");
@@ -51,104 +51,14 @@ const addCardForm = document.querySelector(".popup__form_add-card");
 const titleInput = addCardForm.querySelector("#title");
 const linkInput = addCardForm.querySelector("#link");
 
-const titleError = addCardForm.querySelector("#title-error");
-const linkError = addCardForm.querySelector("#link-error");
-
-const addCardSaveButton = addCardForm.querySelector(".popup__button");
-
 const imagePopup = document.querySelector(".popup_image");
 const imagePopupCloseButton = imagePopup.querySelector(".popup__close_image");
-const imagePopupImage = imagePopup.querySelector(".popup__image");
-const imagePopupCaption = imagePopup.querySelector(".popup__caption");
 
-function openModal(modal) {
-  modal.classList.add("popup_opened");
-  document.addEventListener("keydown", handleEscClose);
-}
-
-function closeModal(modal) {
-  modal.classList.remove("popup_opened");
-  document.removeEventListener("keydown", handleEscClose);
-}
-
-function handleOverlayClick(evt) {
-  if (evt.target === evt.currentTarget) {
-    closeModal(evt.currentTarget);
-  }
-}
-
-profilePopup.addEventListener("mousedown", handleOverlayClick);
-addCardPopup.addEventListener("mousedown", handleOverlayClick);
-imagePopup.addEventListener("mousedown", handleOverlayClick);
-
-function handleEscClose(evt) {
-  if (evt.key === "Escape") {
-    const openedPopup = document.querySelector(".popup_opened");
-
-    if (openedPopup) {
-      closeModal(openedPopup);
-    }
-  }
-}
-
-function handleLikeButtonClick(evt) {
-  evt.target.classList.toggle("element__like-button_active");
-}
-
-function openImagePopup(link, name) {
-  imagePopupImage.src = link;
-  imagePopupImage.alt = name;
-  imagePopupCaption.textContent = name;
-
-  openModal(imagePopup);
-}
-
-function handleDeleteButtonClick(evt) {
-  const card = evt.target.closest(".element");
-  card.remove();
-}
-
-function createCard(name, link) {
-  const card = document.createElement("div");
-  card.classList.add("element");
-
-  const image = document.createElement("img");
-  image.classList.add("element__image");
-  image.src = link;
-  image.alt = name;
-
-  image.addEventListener("click", () => {
-    openImagePopup(link, name);
-  });
-
-  const cardContent = document.createElement("div");
-  cardContent.classList.add("element__cards");
-
-  const title = document.createElement("h2");
-  title.classList.add("element__description");
-  title.textContent = name;
-
-  const likeButton = document.createElement("button");
-  likeButton.classList.add("element__like-button");
-  likeButton.type = "button";
-
-  likeButton.addEventListener("click", handleLikeButtonClick);
-
-  const deleteButton = document.createElement("button");
-  deleteButton.classList.add("element__delete-button");
-  deleteButton.type = "button";
-
-  deleteButton.addEventListener("click", handleDeleteButtonClick);
-
-  cardContent.append(title, likeButton);
-  card.append(image, cardContent, deleteButton);
-
-  return card;
-}
+setOverlayListeners();
 
 initialCards.forEach((cardData) => {
-  const cardElement = createCard(cardData.name, cardData.link);
-  elementsContainer.append(cardElement);
+  const card = new Card(cardData, "#element-template");
+  elementsContainer.append(card.getView());
 });
 
 function openProfilePopup() {
@@ -161,11 +71,12 @@ function openProfilePopup() {
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
 
-  const title = evt.target.elements.title.value;
-  const link = evt.target.elements.link.value;
+  const title = titleInput.value;
+  const link = linkInput.value;
 
-  const newCard = createCard(title, link);
-  elementsContainer.prepend(newCard);
+  const card = new Card({ name: title, link: link }, "#element-template");
+
+  elementsContainer.prepend(card.getView());
 
   closeModal(addCardPopup);
   evt.target.reset();
@@ -202,13 +113,18 @@ imagePopupCloseButton.addEventListener("click", () => {
   closeModal(imagePopup);
 });
 
-addCardSaveButton.disabled = true;
-
-enableValidation({
+const validationConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
   inactiveButtonClass: "popup__button_disabled",
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
+};
+
+const forms = document.querySelectorAll(validationConfig.formSelector);
+
+forms.forEach((form) => {
+  const validator = new FormValidator(validationConfig, form);
+  validator.enableValidation();
 });
